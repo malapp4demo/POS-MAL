@@ -1,30 +1,178 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Select Language</title>
+  <meta name="description" content="Choose language for POS-MAL" />
+
   <style>
-    .btn {
-      display:inline-block;
-      padding:8px 16px;
-      border:1px solid #ccc;
-      border-radius:6px;
-      text-decoration:none;
-      color:#000;
-      background:#f7f7f7;
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #0ea5e9;
+      --primary-hover: #0284c7;
+      --border: #e2e8f0;
+      --btn-bg: #f9fafb;
+      --btn-bg-hover: #eef2f7;
     }
-    .btn:hover { background:#eee; }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 760px;
+      margin: 48px auto;
+      padding: 0 16px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      text-align: center;
+    }
+    p.subtitle {
+      margin: 0 0 24px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    /* Grid for buttons */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    /* Real buttons for navigation */
+    .btn {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--btn-bg);
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.02s ease, box-shadow 0.15s ease;
+    }
+    .btn:hover {
+      background: var(--btn-bg-hover);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .btn:active {
+      transform: translateY(1px);
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .note {
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+    }
+    footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    code {
+      background: #f1f5f9;
+      border-radius: 6px;
+      padding: 2px 6px;
+    }
   </style>
 </head>
 <body>
-  <h1>Select Language</h1>
+  <main class="container">
+    <section class="card" aria-labelledby="title">
+      <h1 id="title">Select Language</h1>
+      <p class="subtitle">Choose your preferred language to continue</p>
 
-  <!-- Use anchor links -->
-  <p>./english.htmlEnglish</a></p>
-  <p>./marathi.htmlMarathi</a></p>
-  <p>./hindi.htmlHindi</a></p>
-  <p><a class="btn" href="./gua></p>
-  <p>./kannada.htmlKannada</a></p>
+      <!-- Buttons -->
+      <div class="grid" role="list">
+        <button type="button" class="btn btn-primary" data-lang="english" role="listitem" aria-label="Open English page">English</button>
+        <button type="button" class="btn" data-lang="marathi" role="listitem" aria-label="Open Marathi page">Marathi</button>
+        <button type="button" class="btn" data-lang="hindi" role="listitem" aria-label="Open Hindi page">Hindi</button>
+        <button type="button" class="btn" data-lang="gujarati" role="listitem" aria-label="Open Gujarati page">Gujarati</button>
+        <button type="button" class="btn" data-lang="kannada" role="listitem" aria-label="Open Kannada page">Kannada</button>
+        <!-- Add more buttons as needed:
+        <button type="button" class="btn" data-lang="telugu">Telugu</button>
+        <button type="button" class="btn" data-lang="tamil">Tamil</button>
+        -->
+      </div>
+
+      <p class="note">
+        Make sure each file (e.g., <code>english.html</code>) exists in the same folder as <code>index.html</code>.
+      </p>
+    </section>
+
+    <footer>
+      <span>© <span id="year"></span> POS-MAL</span>
+    </footer>
+  </main>
+
+  <!-- Navigation script -->
+  <script>
+    // Map language keys to page paths.
+    // If your files are in a subfolder, e.g., 'pages/english.html',
+    // change the values accordingly.
+    const paths = {
+      english:  'english.html',
+      marathi:  'marathi.html',
+      hindi:    'hindi.html',
+      gujarati: 'gujarati.html',
+      kannada:  'kannada.html'
+    };
+
+    // Attach click handlers to all language buttons
+    document.querySelectorAll('button[data-lang]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-lang');
+        const target = paths[key];
+        if (!target) {
+          alert('Target page not configured for: ' + key);
+          return;
+        }
+        // Use relative navigation to keep within the project site
+        window.location.href = target; // e.g., './english.html'
+      });
+    });
+
+    // Current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!--
+    Troubleshooting checklist:
+    1) File names are case-sensitive: 'english.html' ≠ 'English.html'.
+    2) Use relative paths (no leading slash). Good: 'english.html' or './english.html'.
+       Avoid: '/english.html' (this points to the root user site, not your project folder).
+    3) Ensure files are committed to the published branch (usually 'main').
+    4) Wait ~30–60 seconds after pushing; refresh with Ctrl+F5 (cache bypass).
+    5) Test direct URL: https://malapp4demo.github.io/POS-MAL/english.html
+    6) If you have a / tag anywhere, remove it or set to /POS-MAL/
+       because it rewrites all relative links.
+  -->
 </body>
-</html>
