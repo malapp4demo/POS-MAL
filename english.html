@@ -88,6 +88,13 @@
       border: 0;
     }
 
+    .hint {
+      margin-top: 10px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
     footer {
       margin-top: 18px;
       text-align: center;
@@ -101,32 +108,37 @@
     <section class="card">
       <header>
         <h1>English</h1>
-        <p>Instructional video (autoplay, loop, muted)</p>
+        <p>Instructional video (autoplay, loop). Use the player controls to unmute or go full screen.</p>
       </header>
 
       <div class="actions">
         <!-- Back to language selection -->
-        index.html← Back to Language Selection</a>
+        <adex.html← Back to Language Selection</a>
       </div>
 
       <!-- Responsive YouTube Embed -->
       <div class="video-wrapper" aria-label="English instructional video">
         <!--
-          Video: https://youtu.be/IBXl0bs7BrQ?si=dBZLMsQzrcK7voXf
+          Video: https://youtu.be/B_Io2jVlVU0
+          VIDEO_ID = B_Io2jVlVU0
+
           Embed parameters:
-            autoplay=1  -> start automatically
-            mute=1      -> allow autoplay on mobile browsers
-            loop=1      -> repeat
-            playlist=IBXl0bs7BrQ -> required by YouTube for looping a single video
-            controls=0  -> hide player controls (optional; remove if you want controls)
+            autoplay=1   -> start automatically
+            mute=1       -> start muted to satisfy autoplay policies (user can unmute via controls)
+            controls=1   -> show player controls (volume, fullscreen, etc.)
+            loop=1       -> repeat
+            playlist=B_Io2jVlVU0 -> required by YouTube to loop a single video
+            playsinline=1 -> avoid forced fullscreen on iOS
             modestbranding=1 -> cleaner UI
-            rel=0 -> reduce unrelated suggestions
+            rel=0        -> reduce unrelated suggestions
         -->
         <iframe
-          title="POS-MAL English Video"
-          src="https://www.youtube.com/embed/IBXl0bs7BrQ?autoplay=1&mute=1&loop=1&playlist=IBXl0bs7BrQ&controls=0&modestbranding=1&rel=0"
-          allow="autoplay; encrypted-media; picture-in-picture"
-         y with mobile autoplay policies.</p>
+         be.com/embed/B_Io2jVlVU0?autoplay=1&mute=1&controls=1&loop=1&playlist=B_Io2jVlVU0&playsinline=1&modestbranding=1&rel=0</iframe>
+      </div>
+
+      <p class="hint">Tip: Click the speaker icon in the player to unmute, and use the fullscreen button to expand the video.</p>
+
+      <footer>
         <p>© <span id="year"></span> POS-MAL</p>
       </footer>
     </section>
@@ -137,3 +149,4 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
+</html>
