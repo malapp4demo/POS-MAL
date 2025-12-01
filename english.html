@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>English - POS-MAL</title>
+  <title>Hindi - POS-MAL</title>
   <meta name="description" content="Hindi language page for POS-MAL with embedded instructional video." />
 
   <style>
@@ -53,6 +52,7 @@
       justify-content: center;
       margin-bottom: 16px;
     }
+    /* Button styling for the back link */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -98,6 +98,7 @@
         <p>Instructional video (autoplay, loop). Use the player controls to unmute and view fullscreen.</p>
       </header>
 
+      <!-- Back to Language Selection button (correct anchor tag) -->
       <div class="actions">
         index.html← Back to Language Selection</a>
       </div>
@@ -105,12 +106,17 @@
       <!-- YouTube Embed: autoplay (muted initially), controls for un/mute & fullscreen, loop -->
       <div class="video-wrapper" aria-label="Hindi instructional video">
         <iframe
-          title="POS-MAL Hindi Video"
+          title="POS-MAL English Video"
           src="https://www.youtube.com/embed/B_Io2jVlVU0?autoplay=1&mute=1&controls=1&loop=1&playlist=B_Io2jVlVU0&playsinline=1&modestbranding=1&rel=0"
-          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-          allowfullscreen
-          referrerpolicy="strict-origin-when-cross-origin"
-       pt>
+         to unmute and the ⛶ button to enter fullscreen.</p>
+
+      <footer>
+        © <span id="year"></span> POS-MAL
+      </footer>
+    </section>
+  </main>
+
+  <script>
     // Current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
