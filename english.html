@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hindi - POS-MAL</title>
+  <title>English - POS-MAL</title>
   <meta name="description" content="Hindi language page for POS-MAL with embedded instructional video." />
 
   <style>
@@ -13,8 +14,8 @@
       --text: #0f172a;
       --muted: #475569;
       --border: #e2e8f0;
-      --primary: #0ea5e9;
-      --primary-hover: #0284c7;
+      --btn-bg: #f9fafb;
+      --btn-bg-hover: #eef2f7;
     }
     * { box-sizing: border-box; }
     html, body {
@@ -22,7 +23,7 @@
       padding: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
       line-height: 1.5;
     }
     .container {
@@ -59,18 +60,20 @@
       padding: 10px 14px;
       border: 1px solid var(--border);
       border-radius: 10px;
-      background: #f9fafb;
+      background: var(--btn-bg);
       color: var(--text);
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
       transition: background 0.15s ease;
     }
-    .btn:hover { background: #eef2f7; }
+    .btn:hover { background: var(--btn-bg-hover); }
+
+    /* Responsive 16:9 wrapper for iframe */
     .video-wrapper {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* 16:9 */
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
       border-radius: 12px;
       overflow: hidden;
       background: #000;
@@ -82,47 +85,33 @@
       height: 100%;
       border: 0;
     }
-    footer {
-      margin-top: 18px;
-      text-align: center;
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .hint {
-      text-align: center;
-      font-size: 14px;
-      color: var(--muted);
-      margin-top: 10px;
-    }
+
+    .hint { margin-top: 10px; text-align: center; font-size: 14px; color: var(--muted); }
+    footer { margin-top: 18px; text-align: center; font-size: 13px; color: var(--muted); }
   </style>
 </head>
 <body>
   <main class="container">
     <section class="card">
       <header>
-        <h1>Hindi</h1>
-        <p>Instructional video (autoplay, loop). Use controls to unmute or fullscreen.</p>
+        <h1>English</h1>
+        <p>Instructional video (autoplay, loop). Use the player controls to unmute and view fullscreen.</p>
       </header>
 
       <div class="actions">
         index.html← Back to Language Selection</a>
       </div>
 
-      <!-- YouTube Embed -->
+      <!-- YouTube Embed: autoplay (muted initially), controls for un/mute & fullscreen, loop -->
       <div class="video-wrapper" aria-label="Hindi instructional video">
         <iframe
           title="POS-MAL Hindi Video"
           src="https://www.youtube.com/embed/B_Io2jVlVU0?autoplay=1&mute=1&controls=1&loop=1&playlist=B_Io2jVlVU0&playsinline=1&modestbranding=1&rel=0"
-          allow="autoplay; encrypted-mediafor a better view.</p>
-
-      <footer>
-        © <span id="year"></span> POS-MAL
-      </footer>
-    </section>
-  </main>
-
-  <script>
+          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"
+       pt>
+    // Current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
-</html>
