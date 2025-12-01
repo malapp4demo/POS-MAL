@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,26 +36,55 @@
     .btn:hover {
       background: #0284c7;
     }
-    video {
+    /* Responsive 16:9 wrapper for iframe */
+    .video-wrapper {
+      position: relative;
       width: 100%;
       max-width: 800px;
+      margin: 0 auto;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
       border-radius: 8px;
-      outline: none;
+      overflow: hidden;
+      background: #000;
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    p.note {
+      color: #475569;
+      font-size: 14px;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>English</h1>
+    <!-- Fixed back link -->
     index.html← Back to Language Selection</a>
-    
-    <!-- Local video -->
-    <video autoplay muted loop controls>
-      english.mp4
-      Your browser does not support the video tag.
-    </video>
 
-    <p>Use the controls to unmute or view in fullscreen.</p>
-  </div>
+    <!-- YouTube embed (autoplay, muted initially, loop, controls, fullscreen) -->
+    <div class="video-wrapper" aria-label="English instructional video">
+      <!--
+        Video: https://youtu.be/B_Io2jVlVU0
+        VIDEO_ID = B_Io2jVlVU0
+
+        Parameters:
+          autoplay=1       -> start automatically
+          mute=1           -> required for autoplay; user can unmute via controls
+          controls=1       -> show player controls (volume, fullscreen, etc.)
+          loop=1           -> repeat
+          playlist=B_Io2jVlVU0 -> required to loop a single video
+          playsinline=1    -> avoid forced fullscreen on iOS
+          modestbranding=1 -> cleaner UI
+          rel=0            -> reduce unrelated suggestions
+      -->
+      <iframe
+        title="POS-MAL English Video"
+        src="https://www.youtube.com/embed/B_Io2jVlVU0?autoplay=1&mute=1&controls=1&loop=1&playlist=B_Io2jVlVU0&playsinline=1&modestbranding=1&rel=0"
+        allow="autoplay; encrypted-media; picture-in-picture; fullscreendiv>
 </body>
-</html>
